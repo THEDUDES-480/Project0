@@ -1,0 +1,81 @@
+html, body {
+	margin: 0;
+	background-color: #CCCC00;
+	font-family: Geneva, Verdana, sans-serif;
+	font-size: 105%;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin: 0;
+	padding: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+	color: blue;
+}
+body {
+	width: 85%;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 2.5% 2.5% 0;
+	background: white;
+	line-height: 1.8;
+}
+h1 {
+	font: 3.2em Georgia, Geneva, Verdana, sans-serif;
+	font-weight: bold;
+	margin-bottom: .4em;
+	color: #FFDF00;
+	background: black;
+}
+h2 {
+	font: 1.8em Georgia, "Times New Roman", Times, serif;
+	margin-bottom: .2em;
+	background: orange;
+}
+h3 {
+	font: 1.4em Georgia, "Times New Roman", Times, serif;
+	background: #DEB887;
+	margin-bottom: 0.4em;
+}
+p {
+	margin-bottom: 1em;
+}
+a {
+	color: green;
+}
+a:hover {
+	color: blue;
+}
+
+dt {
+	color: black;
+	font-weight: bold;
+	font-size:0.9em;
+}
+dd {
+	font-style: italic;
+	font-size: 0.7em;
+	margin-bottom: 1.4em;
+}
+.center {
+	text-align: center;
+}
+header h2 {
+	padding-bottom: .2em;
+	border-bottom: 1px solid gray;
+}
+footer {
+	border-top: 1px solid gray;
+	text-align: center;
+	font-size: .8em;
+}
+blockquote {
+	font-style: italic;
+}
+.flowRight {
+	float: right;
+	margin-left: 10px;
+}
+.flowLeft {
+	float: left;
+	margin-right: 10px;
+}
