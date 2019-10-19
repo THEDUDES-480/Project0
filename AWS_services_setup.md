@@ -38,19 +38,35 @@ Creating an SSH User:
 11.) Then open up your putty application and input the IP address of the ec2 and select the private key as your authorized key.
 12.) Then  make sure you login as you username in the Data setting.
 
-Connecting Domain Name with ec2 Instance:
-1.)
 
-Creating an SSL Certificate
-1.) 
+Creating an SSL Certificate (steps 1 - 5 from certbot.eff.org):
+1.) sudo apt-get install software-properties-common
+2.) sudo add-apt-repository universe
+3.) sudo add-apt-repository ppa:certbot/certbot
+4.) sudo apt-get install certbot python-certbot-apache 
+5.) sudo certbot certonly --apache
+6.) use the locally generated certificate body, private key and chain and import key to the AWS Certificate Manager
 
 Create Load Balancer.
 1.) Create a load balancer, use previous generation option.
 2.) Use the VPC created previously, add 2 public subnets for availability.
 3.) Add HTTP and HTTPS protocols to Load Balancer.
 4.) Use the same security group used for ec2 (should include SSH, HTTP, HTTPS)
-5.) For Security Settings, use the TLS key from previous step.
-6.) Confugure Health Check, and select the ec2 instance created previously.
+5.) For Security Settings, use the certificate from AWS Certificate Manager generated from previous step.
+6.) Confugure Health Check, and select the ec2 instance created in previous step.
+
+Connecting Domain Name with ec2 Instance using Route53:
+1.) Create a Route 53 hosted zone using the domain purchases in previous step.
+2.) Use the Name Servers (NS) provided by AWS to confugre Domain Webiste on vendor's website.
+3.) Create a record set to the newly created hosted zone, give it an allias using the load balancer created in previous steps.
+
+Enforece HTTPS over HTTP (bonus step):
+1.) Add the following lines to the apache2.conf:
+<VirtualHost *:80>
+RewriteEngine On
+RewriteCond %{HTTP:X-Forwarded-Proto} =http
+RewriteRule .* https://%{HTTP:Host}%{REQUEST_URI} [L,R=permanent]
+</VirtualHost>	
 
 Creating the Ansible playbook
 The ansible playbook for installing lamp:
