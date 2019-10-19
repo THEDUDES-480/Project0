@@ -1,4 +1,5 @@
 Setting AWS account:
+
 1.) Go to the  AWS website.
 2.) Create an account wiht the email.
 3.) Then give a name and password for the account.
